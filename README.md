@@ -2,9 +2,15 @@
 
 一个 Windows 托盘小工具：右键托盘图标，点击目标窗口，将它找回到当前操作屏幕中央。
 
+## 下载
+
+在 [GitHub Releases](https://github.com/JeckChen666/FastWindowResizer/releases/latest) 下载 `FastWindowResizer-v1.0.0-win-x64.zip`，解压整个文件夹后运行 `FastWindowResizer.exe`，无需另装 .NET。
+
+支持 Windows x64，已在 Windows 11 验证。Release 同时提供 SHA-256 校验文件；可以用 PowerShell 的 `Get-FileHash` 检查下载文件。此版本未进行代码签名。
+
 ## 使用
 
-1. 打开 `dist/FastWindowResizer/FastWindowResizer.exe`。
+1. 打开解压目录中的 `FastWindowResizer.exe`；本地构建的默认路径为 `dist/FastWindowResizer/FastWindowResizer.exe`。
 2. 在任务栏通知区域找到蓝色窗口图标。若被 Windows 收起，在托盘的隐藏图标菜单中寻找；可自行拖到常显区域。
 3. 右键图标，再点击要找回的窗口。
 4. 退出时右键图标，选择“退出”。
@@ -44,6 +50,8 @@
 ```powershell
 dotnet publish FastWindowResizer.csproj -c Release -r win-x64 --self-contained false -o dist/framework-dependent
 ```
+
+正式便携包中的 `third-party/` 包含随附 .NET 运行时的许可文件；`docs/releases/` 保存各版发布说明。
 
 ## 已知边界
 
