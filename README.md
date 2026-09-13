@@ -4,7 +4,11 @@
 
 ## 下载
 
-在 [GitHub Releases](https://github.com/JeckChen666/FastWindowResizer/releases/latest) 下载 `FastWindowResizer-v1.0.0-win-x64.zip`，解压整个文件夹后运行 `FastWindowResizer.exe`，无需另装 .NET。
+推荐下载 [Windows 安装包](https://github.com/JeckChen666/FastWindowResizer/releases/download/v1.0.0/FastWindowResizer-v1.0.0-win-x64-setup.exe)，双击后按中文向导安装，无需管理员权限或另装 .NET。
+
+安装程序默认放到当前用户的应用目录，创建开始菜单入口，可选创建桌面快捷方式。安装后可以从 Windows“设置 → 应用 → 已安装的应用”卸载。
+
+也可在 [GitHub Releases](https://github.com/JeckChen666/FastWindowResizer/releases/latest) 下载 `FastWindowResizer-v1.0.0-win-x64.zip`，解压整个文件夹后运行 `FastWindowResizer.exe`。
 
 支持 Windows x64，已在 Windows 11 验证。Release 同时提供 SHA-256 校验文件；可以用 PowerShell 的 `Get-FileHash` 检查下载文件。此版本未进行代码签名。
 
@@ -14,6 +18,8 @@
 2. 在任务栏通知区域找到蓝色窗口图标。若被 Windows 收起，在托盘的隐藏图标菜单中寻找；可自行拖到常显区域。
 3. 右键图标，再点击要找回的窗口。
 4. 退出时右键图标，选择“退出”。
+
+从便携版迁移时，先退出旧托盘程序，再安装并启动新版本。若旧版本配置了自启，在安装版托盘菜单重新勾选“开机自启”，使路径指向安装目录。安装或卸载遇到“程序正在运行”的提示时，请先从托盘退出。
 
 ## 开机自启
 
@@ -83,3 +89,5 @@ FastWindowResizer/
 源码、最终图标和原始图稿纳入 Git；编译目录、发布包、中间生成文件、个人 IDE 配置及 `.env` 文件不纳入 Git。正常构建不需要图像 API 密钥或 Python。
 
 运行中的程序可能占用原发布目录；可用 `./build.ps1 -OutputDirectory dist/check` 发布到独立目录。修改原图后，用 `python scripts/prepare_icon.py` 重新导出图标。
+
+构建安装包需要 Inno Setup 6.7+：先运行 `./build.ps1`，再运行 `./scripts/build-installer.ps1`。安装行为及验证方式见 [installer/README.md](installer/README.md)。
